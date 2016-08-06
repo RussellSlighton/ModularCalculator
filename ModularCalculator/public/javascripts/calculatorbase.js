@@ -14,11 +14,10 @@
 })
 
 
-
 mod.controller("CalculatorControllerBase",
     function CalculatorControllerBase($scope, $mdDialog, $mdMedia, $timeout, $mdSidenav, $log) {
     	$scope.stringEquation = "0";
-    	this.listOfFunctions = ["+","-","/","*","C","1","2","3"];
+    	this.listOfFunctions = ["C"];
     	$scope.temp = "Hello";
     	$scope.started = false;
     	$scope.status;

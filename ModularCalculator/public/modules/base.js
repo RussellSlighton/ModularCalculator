@@ -1,6 +1,6 @@
 var Base = new Module();
 
-Base.exposedFunctions = ["+", "-", "*", "/", "=", "1", "2", "3", "4", '5', '6', '7', '8', '9', "10"];
+Base.exposedFunctions = ["+", "-", "*", "/", "=", "1", "2", "3", "4", '5', '6', '7', '8', '9', "0"];
 Base.requires = "";
 Base.description = "Basic functionality.";
 Base.name = "Base";
