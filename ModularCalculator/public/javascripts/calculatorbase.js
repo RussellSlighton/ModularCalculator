@@ -29,7 +29,7 @@ angular.module("BlankApp", ['ngMaterial']).controller("CalculatorControllerBase"
 		    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
 		    $mdDialog.show({
 		      controller: DialogController,
-		      templateUrl: 'panel.tmpl.html',
+		      templateUrl: 'workshop.panel.ejs',
 		      parent: angular.element(document.body),
 		      targetEvent: ev,
 		      clickOutsideToClose:true,
