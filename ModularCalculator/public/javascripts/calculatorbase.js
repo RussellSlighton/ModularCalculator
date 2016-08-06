@@ -32,6 +32,7 @@ mod.controller("CalculatorControllerBase",
             }
             var temp = {name:nam, functions:funcs}
             listOfModules.push(temp);
+            addModuleToContainer(temp.name);
         }
         /**
         *  Assumes that func is a valid object in listOfModules[]
@@ -44,7 +45,24 @@ mod.controller("CalculatorControllerBase",
                 listOfFunctions.splice(index, 1);
                 func.functions.splice(0, 1);
             }
+            removeModuleFromContainer(func.name)
             listOfModules.splice(index2, 1);
+        }
+
+        $scope.addModuleToContainer = function(funcName){
+            var element = document.getElementById("ModuleContainer");
+
+            var button = document.createElement("md-button id=funcName");
+            var node = document.createTextNode(funcName);
+            button.appendChild(node);
+
+            element.appendChild(button);
+        }
+
+        $scope.removeModuleFromContainer = function(funcName){
+            var parent = document.getElementById("ModuleContainer");
+            var child = document.getElementById(funcName);
+            parent.removeChild(child);
         }
 
         $scope.changeTheme = function() {
