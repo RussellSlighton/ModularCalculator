@@ -14,9 +14,14 @@ router.get('/', function(req, res, next) {
 router.get('/services/calculate/', function(req, res, next) {
   var url = req.url;
   var func= url.split("?")[1];
-  var par = new Parse([Base],func);
+  var moduleList= url.split("?")[2];
+  var modules = moduleList.split(',');
+  var mods = []
+  for(var i = 0; i<modules.length; i++){
+    mods.push(require(modules[i]));
+  }
+  var par = new Parse(mods,func);
   var resu = par.run();
-  console.log(resu);
   res.format({
     'text/plain': function(){
       res.send(resu.toString());
@@ -32,7 +37,6 @@ router.get('/services/funcList/', function(req, res, next) {
   for(var i = 0; i<modules.length; i++){
     functions.push(require(modules[i]).exposedFunctions);
   }
-  console.log(functions);
   res.format({
     'text/plain': function(){
       res.send([].concat.apply([], functions));
