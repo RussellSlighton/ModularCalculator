@@ -24,6 +24,28 @@ mod.controller("CalculatorControllerBase",
     	$scope.status;
         $scope.toggleRight = buildToggler('right');
         $scope.theme = 'indigo';
+        this.listOfModules = []
+
+        $scope.addModule = function(funcs, nam){
+            for (i = 0; i < funcs.length; i++){
+                listOfFunctions.push(funcs[i]);
+            }
+            var temp = {name:nam, functions:funcs}
+            listOfModules.push(temp);
+        }
+        /**
+        *  Assumes that func is a valid object in listOfModules[]
+        *
+        */
+        $scope.removeModule = function(func){
+            var index2 = listOfModules.indexOf(func);
+            while(func.functions.length > 0){
+                var index = listOfFunctions.indexOf(func.functions[0]);
+                listOfFunctions.splice(index, 1);
+                func.functions.splice(0, 1);
+            }
+            listOfModules.splice(index2, 1);
+        }
 
         $scope.changeTheme = function() {
             $scope.theme = $scope.theme === 'indigo' ? 'lime' : 'indigo'; 
