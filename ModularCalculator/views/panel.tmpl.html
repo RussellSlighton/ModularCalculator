@@ -1,0 +1,69 @@
+<md-dialog aria-label="Mango (Fruit)"  ng-cloak>
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Function Module Workshop</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+      <!-- ROW 1 -->
+        <div  layout="row">
+        <!-- CARD 1 -->
+          <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">Basic Physics Functions</span>
+              <span class="md-subhead">Includes simple physics functions like the kinematic equations</span>
+            </md-card-title-text>
+            <md-card-title-media>
+              <div class="md-media-lg card-media"><img src="http://placehold.it/150x100"></div>
+            </md-card-title-media>
+          </md-card-title>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button>Read More</md-button>
+            <md-button>Install</md-button>
+          </md-card-actions>
+          </md-card>
+          <!-- CARD 2 -->
+          <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Aerospace Engineering Equations</span>
+            <span class="md-subhead">Quickly calculate delta V and other rocket science equations</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-lg card-media"><img src="http://placehold.it/150x100"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>Read More</md-button>
+          <md-button>Install</md-button>
+        </md-card-actions>
+        </md-card>
+        <!-- CARD 3 -->
+          <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Full Scientific Calculator</span>
+            <span class="md-subhead">All the standard scientific calculator functions you'd expect.</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-lg card-media"><img src="http://placehold.it/150x100"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>Read More</md-button>
+          <md-button>Install</md-button>
+        </md-card-actions>
+        </md-card>
+      </div>
+    </div>
+    </md-dialog-content>
+    
+  </form>
+</md-dialog>
