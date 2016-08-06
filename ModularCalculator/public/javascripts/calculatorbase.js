@@ -10,6 +10,11 @@
       .accentPalette('orange')
       .warnPalette('blue');
 
+    $mdThemingProvider.theme('red')
+        .primaryPalette('red')
+        .accentPalette('pink') 
+        .warnPalette('blue') 
+
     $mdThemingProvider.alwaysWatchTheme(true);
 })
 
@@ -23,7 +28,9 @@ mod.controller("CalculatorControllerBase",
     	$scope.status;
         $scope.toggleRight = buildToggler('right');
         $scope.theme = 'indigo';
+        $scope.themeIndex = 0;
         this.listOfModules = []
+        $scope.themeList = ['indigo', 'lime', 'red']
 
         $scope.addModule = function(funcs, nam){
             for (i = 0; i < funcs.length; i++){
@@ -65,7 +72,11 @@ mod.controller("CalculatorControllerBase",
         }
 
         $scope.changeTheme = function() {
-            $scope.theme = $scope.theme === 'indigo' ? 'lime' : 'indigo'; 
+            $scope.themeIndex++;
+            if ($scope.themeIndex>=$scope.themeList.length){
+                $scope.themeIndex = 0;
+            }
+            $scope.theme = $scope.themeList[$scope.themeIndex];
         };
         
         $scope.isOpenRight = function(){
