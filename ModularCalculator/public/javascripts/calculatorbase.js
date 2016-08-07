@@ -29,17 +29,40 @@ mod.controller("CalculatorControllerBase",
         $scope.toggleRight = buildToggler('right');
         $scope.theme = 'indigo';
         $scope.themeIndex = 0;
-        this.listOfModules = []
+        this.listOfModules = ["base"];
+        $scope.moduleString = "Base";
         $scope.themeList = ['indigo', 'lime', 'red']
 
-        $scope.addModule = function(funcs, nam){
-            for (i = 0; i < funcs.length; i++){
-                listOfFunctions.push(funcs[i]);
+        $scope.addFunctions = function(funcs){
+        var funcArr = funcs.split(',');
+        for(var i = 0; i < funcArr.length; i++){
+            if (this.listOfFunctions.indexOf(funcArr[i]) === -1){
+                this.listOfFunctions.push(funcArr[i]);
             }
-            var temp = {name:nam, functions:funcs}
-            listOfModules.push(temp);
-            addModuleToContainer(temp.name);
+         }
+         $scope.addEquals();
         }
+
+        $scope.addEquals = function(){
+            if(this.listOfFunctions.indexOf("=") != -1){ return;}
+            this.listOfFunctions.push("=");
+        }
+
+        $scope.getFunctions = function(){
+            this.listOfFunctions = ["C"];
+            this.listOfModules = ["base"]
+            var temp = $scope.addFunctions(httpGet('/services/funcList?'+$scope.moduleString));
+        }
+       
+
+        $scope.addModule = function(modName){
+            var temp = {name:modName, functions:"services/funcList?"+modName}
+            console.log(temp);
+            console.log(this.listOfModules)
+            $scope.moduleString += ","+modName;
+            $scope.getFunctions()
+        }
+
         /**
         *  Assumes that func is a valid object in listOfModules[]
         *
@@ -128,10 +151,15 @@ mod.controller("CalculatorControllerBase",
  
 
     	$scope.onClick = function(symbol){
-    		if(symbol === "C"){
+    		console.log(symbol);
+            if(symbol === "C"){
     			$scope.stringEquation = "0";
     			$scope.started = false;
     		}
+
+            else if(symbol === "="){
+                $scope.stringEquation = httpGet('/services/calculate?'+$scope.stringEquation);
+            }
 
     		else if(!$scope.started && $scope.stringEquation === "0"){
     			$scope.stringEquation = symbol;
@@ -183,6 +211,8 @@ mod.controller("DialogController",
             $scope.customFullscreen = (wantsFullScreen === true);
         });
     };
+
+
 });
 
 mod.controller('NavControl', function ($scope, $timeout, $mdSidenav, $log) {

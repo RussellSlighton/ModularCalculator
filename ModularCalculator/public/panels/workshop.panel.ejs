@@ -23,7 +23,7 @@
           </md-card-title>
           <md-card-actions layout="row" layout-align="end center">
             <md-button ng-click="newPanel('/panels/basicphysics.panel.ejs', $event)">Read More</md-button>
-            <md-button>Install</md-button>
+            <md-button ng-controller="CalculatorControllerBase" ng-click="addModule('basicphysics')">Install</md-button>
           </md-card-actions>
           </md-card>
           <!-- CARD 2 -->

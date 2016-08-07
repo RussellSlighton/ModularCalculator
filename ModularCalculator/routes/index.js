@@ -30,8 +30,10 @@ router.get('/services/calculate/', function(req, res, next) {
 });
 
 router.get('/services/funcList/', function(req, res, next) {
-  var url = req.url;
+  console.log("hi russell")
+    var url = req.url;
   var moduleList= url.split("?")[1];
+  console.log(moduleList);
   var modules = moduleList.split(',');
   var functions = []
   for(var i = 0; i<modules.length; i++){
