@@ -41,7 +41,7 @@ router.get('/services/funcList/', function(req, res, next) {
   }
   res.format({
     'text/plain': function(){
-      res.send([].concat.apply([], functions).toString());
+      res.send([].concat.apply([], functions).join('|'));
     }
   })
 });
