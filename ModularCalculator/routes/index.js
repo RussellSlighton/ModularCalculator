@@ -30,7 +30,6 @@ router.get('/services/calculate/', function(req, res, next) {
 });
 
 router.get('/services/funcList/', function(req, res, next) {
-  console.log("hi russell")
     var url = req.url;
   var moduleList= url.split("?")[1];
   console.log(moduleList);

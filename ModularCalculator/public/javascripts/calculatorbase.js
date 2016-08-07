@@ -19,6 +19,7 @@
 })
 
 
+
 mod.controller("CalculatorControllerBase",
     function CalculatorControllerBase($scope, $mdDialog, $mdMedia, $timeout, $mdSidenav, $log) {
     	$scope.stringEquation = "0";
@@ -29,17 +30,21 @@ mod.controller("CalculatorControllerBase",
         $scope.toggleRight = buildToggler('right');
         $scope.theme = 'indigo';
         $scope.themeIndex = 0;
-        this.listOfModules = ["base"];
-        $scope.moduleString = "Base";
+        this.listOfModules = ["base,basephysics,scientific,aerospace"];
+        $scope.moduleString = "Base,basephysics,scientific,aerospace";
         $scope.themeList = ['indigo', 'lime', 'red']
+        
+        
 
         $scope.addFunctions = function(funcs){
-        var funcArr = funcs.split(',');
+        console.log("addFunctions");
+        var funcArr = funcs.split('|');
         for(var i = 0; i < funcArr.length; i++){
             if (this.listOfFunctions.indexOf(funcArr[i]) === -1){
                 this.listOfFunctions.push(funcArr[i]);
             }
          }
+         console.log(this.listOfFunctions);
          $scope.addEquals();
         }
 
@@ -49,17 +54,16 @@ mod.controller("CalculatorControllerBase",
         }
 
         $scope.getFunctions = function(){
+            console.log("getfunctions")
             this.listOfFunctions = ["C"];
-            this.listOfModules = ["base"]
             var temp = $scope.addFunctions(httpGet('/services/funcList?'+$scope.moduleString));
         }
        
 
         $scope.addModule = function(modName){
-            var temp = {name:modName, functions:"services/funcList?"+modName}
-            console.log(temp);
-            console.log(this.listOfModules)
+            console.log("addModule")
             $scope.moduleString += ","+modName;
+            console.log($scope.moduleString);
             $scope.getFunctions()
         }
 
