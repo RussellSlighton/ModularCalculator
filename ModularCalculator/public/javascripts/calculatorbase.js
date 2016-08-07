@@ -23,7 +23,7 @@
 mod.controller("CalculatorControllerBase",
     function CalculatorControllerBase($scope, $mdDialog, $mdMedia, $timeout, $mdSidenav, $log) {
     	$scope.stringEquation = "0";
-    	this.listOfFunctions = ["C"];
+    	this.listOfFunctions = ["C", "(",")"];
     	$scope.temp = "Hello";
     	$scope.started = false;
     	$scope.status;
@@ -34,7 +34,21 @@ mod.controller("CalculatorControllerBase",
         $scope.moduleString = "Base,basephysics,scientific,aerospace";
         $scope.themeList = ['indigo', 'lime', 'red']
         
-        
+        this.openMenu = function($mdOpenMenu, ev) {
+          originatorEv = ev;
+          $mdOpenMenu(ev);
+        };
+
+        this.announceClick = function(index) {
+          $mdDialog.show(
+            $mdDialog.alert()
+              .title('You clicked!')
+              .textContent('You clicked the menu item at index ' + index)
+              .ok('Nice')
+              .targetEvent(originatorEv)
+          );
+          originatorEv = null;
+        };
 
         $scope.addFunctions = function(funcs){
         console.log("addFunctions");
@@ -55,7 +69,7 @@ mod.controller("CalculatorControllerBase",
 
         $scope.getFunctions = function(){
             console.log("getfunctions")
-            this.listOfFunctions = ["C"];
+            this.listOfFunctions = ["C","(",")"];
             var temp = $scope.addFunctions(httpGet('/services/funcList?'+$scope.moduleString));
         }
        

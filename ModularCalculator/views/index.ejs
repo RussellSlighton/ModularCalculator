@@ -58,7 +58,36 @@
             <md-button ng-click="changeTheme()" class="md-raised md-warn">
               Change Theme
             </md-button>
-            <div id="ModuleContainer"></div>
+            <div id="ModuleContainer" layout="column">
+              <md-menu md-position-mode="target-right target">
+                <md-button class="md-raised md-primary" ng-click="$mdOpenMenu($event)">Base</md-button>
+                <md-menu-content width="6">
+                  <md-menu-item ng-repeat="item in [1, 2, 3]">
+                  </md-menu-item>
+                </md-menu-content>
+              </md-menu>
+              <md-menu md-position-mode="target-right target">
+                <md-button class="md-raised md-primary" ng-click="$mdOpenMenu($event)">Basic Physics</md-button>
+                <md-menu-content width="6">
+                  <md-menu-item ng-repeat="item in [1, 2, 3]">
+                  </md-menu-item>
+                </md-menu-content>
+              </md-menu>
+              <md-menu md-position-mode="target-right target">
+                <md-button class="md-raised md-primary" ng-click="$mdOpenMenu($event)">Aerospace Engineering</md-button>
+                <md-menu-content width="6">
+                  <md-menu-item ng-repeat="item in [1, 2, 3]">
+                  </md-menu-item>
+                </md-menu-content>
+              </md-menu>
+              <md-menu md-position-mode="target-right target">
+                <md-button class="md-raised md-primary" ng-click="$mdOpenMenu($event)">Scientific</md-button>
+                <md-menu-content width="6">
+                  <md-menu-item ng-repeat="item in [1, 2, 3]">
+                  </md-menu-item>
+                </md-menu-content>
+              </md-menu>
+            </div>
           </md-content>
         </md-sidenav>
       </div>
